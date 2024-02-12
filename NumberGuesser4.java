@@ -120,6 +120,9 @@ public class NumberGuesser4 {
         }
     }
 
+//ucid : Fj28
+//Date : 02/12/2024
+
     private void processGuess(int guess) {
         if (guess < 0) {
             return;
@@ -130,6 +133,14 @@ public class NumberGuesser4 {
             pickNewRandom = true;
         } else {
             System.out.println("That's wrong");
+            
+            // Display higher or lower hint
+            if (guess < number) {
+                System.out.println("Hint: The correct number is higher.");
+            } else {
+                System.out.println("Hint: The correct number is lower.");
+            }
+    
             strikes++;
             if (strikes >= maxStrikes) {
                 lose();
@@ -138,6 +149,7 @@ public class NumberGuesser4 {
         }
         saveState();
     }
+    
 
     private int strToNum(String message) {
         int guess = -1;
