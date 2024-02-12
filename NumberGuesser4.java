@@ -163,10 +163,34 @@ public class NumberGuesser4 {
         return guess;
     }
 
+//ucid : Fj28
+//Date : 02/12/2024
+
+private void selectDifficulty(String difficulty) {
+    switch (difficulty.toLowerCase()) {
+        case "easy":
+            maxStrikes = 15;
+            break;
+        case "medium":
+            maxStrikes = 8;
+            break;
+        case "hard":
+            maxStrikes = 2;
+            break;
+        default:
+            System.out.println("Invalid difficulty. Defaulting to medium.");
+            maxStrikes = 8;
+    }
+}
+
     public void start() {
         try (Scanner input = new Scanner(System.in);) {
             System.out.println("Welcome to NumberGuesser4.0");
             System.out.println("To exit, type the word 'quit'.");
+            // Add difficulty selection
+            System.out.println("Select difficulty: easy, medium, hard");
+            String difficulty = input.nextLine();
+            selectDifficulty(difficulty); 
             loadState();
             do {
                 if (pickNewRandom) {
